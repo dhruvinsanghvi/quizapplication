@@ -1,0 +1,434 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+ 
+  </head>
+
+  <body ng-app="finalassignmentApp" class="paralleleffect" ng-controller="mainCtrl">
+ 
+   
+  <ul id="scene" class="paralleleffect" ng-hide="quizMetrics.hideParallax">
+            <li class="layer" data-depth="0.60">
+              <div class="globe">
+                  <div class="logo2"></div>
+                  <div class="logo4"></div>
+                  <div class="logo5"></div>
+                  <div class="logo8"></div>
+
+
+              </div>
+            </li>
+            <li class="layer" data-depth="0.40">
+               <div class="globe1">
+                   <div class="logo1"></div>
+                   <div class="logo3"></div>
+               </div>
+
+            </li>
+             <li class="layer" data-depth="0.40">
+               <div class="globe2">
+                 <div class="logo6"></div>
+                  <div class="logo7"></div>
+
+               </div>
+
+            </li>
+          
+          
+  </ul>
+    <div ng-class="{'maincontainer':quizMetrics.showNav, 'container':quizMetrics.showContainer}">
+      <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" ng-controller="navCtrl" ng-show="quizMetrics.showNav">
+      <div class="sidebar-user">
+    <div class="media sidebar-padding">
+      <div class="media-left media-middle">
+         <img ng-src="{{quizMetrics.formData.imageStrings}}"  class="img-circle profilepic"/>
+       
+      </div>
+      <div class="media-body media-middle">
+       <h3>{{quizMetrics.formData.username}}</h3>
+        
+        <!--<ul class="list-unstyled list-inline margin-none">
+          <li><a href="account.html"><i class="md-person-outline"></i></a></li>
+          <li><a href="email.html"><i class="md-email"></i></a></li>
+          <li><a href="#"><i class="md-settings"></i></a></li>
+          <li><a href="login.html"><i class="md-exit-to-app"></i></a></li>
+        </ul>-->
+      </div>
+    </div>
+  </div>
+     
+      <a href="#">Javascript
+          <div class="progress">
+                <div class="progress-bar  progress-bar-success" role="progressbar" aria-valuenow="{{quizMetrics.numCorrect / quizMetrics.quizData.length * 100;}}" aria-valuemin="0" aria-valuemax="100" style="width: {{quizMetrics.numCorrect / quizMetrics.quizData.length * 100;}}%;">
+                {{quizMetrics.numCorrect / quizMetrics.quizData.length * 100 | number:2}}%
+               </div>
+          </div>
+
+
+      </a>
+      <a href="#">HTML5
+          <div class="progress">
+                <div class="progress-bar  progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                60%
+               </div>
+          </div>
+
+
+      </a>
+      <a href="#">Css3</a>
+      <a href="#">Jquery</a>
+      <a href="#">Android</a>
+      <a href="#">Python</a>
+    </nav>
+
+    <div class="row" ng-hide="showForm" ng-controller="formCtrl">
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <h1 class="text-center login-title">Register</h1>
+            <div class="account-wall">
+
+                 <form class="form-signin" name="myForm" method="post" id="f1" ng-show="!login">
+                  <div flow-init  flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]"flow-files-submitted="$flow.upload()" flow-file-success="getFile($file)">
+                            <div  ng-hide="$flow.files.length">
+                                 <img class="profile-img img-circle img-responsive" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
+                                alt="">
+                            </div>
+                            <div  ng-show="$flow.files.length">
+                                <img class="profile-img img-circle img-responsive" flow-img="$flow.files[0]" />
+                            </div>
+                            <div>
+                               <button  class="btn btn-default-light bold center-block" ng-hide="$flow.files.length" flow-btn flow-attrs="{accept:'image/*'}" >Upload Image</button>
+                              
+                               <button class="btn btn-danger" ng-show="$flow.files.length" ng-click="$flow.cancel()">Remove</button>
+                            </div>
+                        </div>
+                 
+
+                <div>
+                     <label for="confEmail">Full Name</label>
+                     <input type="text" class="form-control" placeholder="Full Name"  ng-model="formInfo.username" required autofocus>
+                      <p class="text-danger">{{nameRequired}}</p>
+                </div>
+
+
+                <div class="form-group">
+                     <label for="email">Email address</label>
+                     <input type="text" class="form-control" placeholder="Email"  ng-model="formInfo.email" required autofocus>
+                     <p class="text-danger">{{emailRequired}}</p>
+                </div>
+                
+                <div class="form-group">
+                   <label for="pass">Password</label>
+                     <input type="password" class="form-control" placeholder="Password" ng-model="formInfo.password" required>
+                     <p class="text-danger">{{passRequired}}</p>
+                </div>
+                <input class="btn btn-lg btn-primary btn-block" type="button" value="Register" ng-click="register()">
+                
+                
+                <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
+                </form>
+
+
+
+
+
+
+
+
+
+
+              
+                <form class="form-signin" name="myForm2" ng-show="login">
+               
+
+
+                <div class="form-group">
+                     <label for="email">Email address</label>
+                     <input type="text" class="form-control" placeholder="Email"  ng-model="formInfo.email" required autofocus>
+                     <p class="text-danger">{{emailRequired}}</p>
+                </div>
+                
+                <div class="form-group">
+                   <label for="pass">Password</label>
+                     <input type="password" class="form-control" placeholder="Password" ng-model="formInfo.password" required>
+                     <p class="text-danger">{{passRequired}}</p>
+                </div>
+                <input class="btn btn-lg btn-primary btn-block" type="button" value="Sign In" ng-click="login()">
+                
+                
+                <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
+                </form>
+                <a href="#" ng-click="login=true;" ng-show="!login">Sign In</a>
+                <a href="#" ng-click="login=false;" ng-show="login">Register</a>
+            </div>
+           
+        </div>
+    </div>
+        
+
+        <div ng-controller="listCtrl" ng-show="quizMetrics.showList">
+             <form class="form-inline well well-sm clearfix">
+                  <span class="glyphicon glyphicon-search"></span>
+                  <input type="text" placeholder="Search..." class="form-control" ng-model="search">
+                 
+              </form>
+             <div class="row">
+                 <div class="col-sm-6" ng-repeat="list in data | filter:search">
+                     <div class="well well-sm">
+                         <div class="row">
+                              <div class="col-md-6">
+                                  <img ng-src="{{list.image_url}}" class="img-rounded img-responsive well-image">
+                              </div>
+                              <div class="col-md-6">
+                                  <h4>{{list.type}}</h4>
+                                  <p><strong>Language Type: </strong>{{list.languageType}}</p>
+                                  <p><strong>Description: </strong>{{list.description}}</p>
+                                  <button class="btn btn-primary pull-right"  ng-click="activateQuiz(list)">Start Quiz</button>
+                              </div>
+                         </div><!-- row -->
+                    </div><!-- well -->
+                 </div><!-- col-xs-6 -->
+              </div>
+         
+    
+      </div><!-- end of LIST CONTROLLER-->
+      <div ng-controller="quizCtrl" ng-show="quizMetrics.activeQuiz">
+           <div class="row">
+               <div class="col-xs-8">
+                   <h2>Progress:</h2>
+                   <div class="btn-toolbar">
+                      <button class="btn" ng-repeat="question in quizMetrics.quizData" ng-class="{'btn-info':question.selected!==null, 'btn-danger':question.selected === null}" ng-click="setActiveQuestion($index)">
+                      <span class="glyphicon"
+                        ng-class="{'glyphicon-pencil': question.selected !== null, 'glyphicon-question-sign': question.selected === null}"></span>
+                      </button> 
+                
+                   </div>
+               </div> 
+
+               <div class="col-xs-4">
+                   <div class="row">
+                      <h2>Legend:</h2>
+                      <div class="col-sm-4">
+                            <button class="btn btn-info">
+                                 <span class="glyphicon glyphicon-pencil"></span>
+                            </button>
+                            <p>Answered</p>
+                      </div>
+                      <div class="col-sm-4">
+                             <button class="btn btn-danger">
+                                  <span class="glyphicon glyphicon-question-sign"></span>
+                             </button>
+                           <p>Unanswered</p>
+                      </div>
+                    
+                    </div>
+                </div>
+            </div>
+            <div class="row mgt40">
+                <div class="alert alert-danger" ng-show="showError">
+                      Error! You have not answered all of the questions!
+ 
+                      <button class="close" ng-click="showError=false">&times</button>
+                </div>
+                <h3 class="pull-left mgl10">Questions</h3>
+                <h3 class="pull-right mgr10">  <timer start-time="20000"> {{minutes}} minutes, {{seconds}} seconds.</timer></h3>
+                <div class="well well-sm" ng-hide="finalise">
+                    <div class="row">
+                         <div class="col-xs-12">
+                             <h4>{{activeQuestion +1 + ". " + quizMetrics.quizData[activeQuestion].text}}</h4>
+                             <div class="row" ng-if="quizMetrics.quizData[activeQuestion].type ==='text'">
+                                <div class="col-sm-12" ng-repeat="answers in quizMetrics.quizData[activeQuestion].possibilities">
+                                    <h4 class="answer" ng-class="{'bg-info': $index === quizMetrics.quizData[activeQuestion].selected}" ng-click="selectAnswer($index)">
+                                      {{answers.answer}}
+                                    </h4>
+                                </div>
+                             </div>
+
+                              <div class="row" ng-if="quizMetrics.quizData[activeQuestion].type ==='image'">
+                                <div class="col-sm-6" ng-repeat="answers in quizMetrics.quizData[activeQuestion].possibilities">
+                                    <div class="image-answer" ng-class="{'image-selected': $index === quizMetrics.quizData[activeQuestion].selected}" ng-click="selectAnswer($index)">
+                                      <img ng-src="{{answers.answer}}">
+
+                                    </div>
+                                </div>
+                             </div>
+
+                         </div>
+
+
+                    </div>
+                    <button class="btn btn-warning" ng-click="questionAnswered()">Continue</button>
+
+
+                </div>
+
+                <div class="well well-sm" ng-show="finalise">
+                   <div class="row">
+                       <div class="col-xs-12">
+                            <h3>Are you sure you want to submit your answers?</h3>
+                            <button class="btn btn-success" ng-click="finaliseAnswers()">Yes</button>
+                            <button class="btn btn-danger" ng-click="finalise=false">No</button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+      </div><!-- end of Quiz CONTROLLER-->
+
+      <div ng-controller="resultCtrl" ng-show="quizMetrics.resultActive">
+
+        <div class="row">
+             <div class="col-xs-8">
+                  <h2>Results:</h2>
+                  <div class="btn-toolbar">
+ 
+                        <button class="btn"
+                                     ng-repeat="question in quizMetrics.quizData"
+                                     ng-class="{'btn-success': question.correct, 'btn-danger': !question.correct}"
+                                     ng-click="setActiveQuestion($index)">
+ 
+                              <span class="glyphicon"
+                              ng-class="{'glyphicon-ok': question.correct, 'glyphicon-remove': !question.correct}"></span>
+                       
+                        </button>
+                  </div>
+              </div>
+              <div class="col-xs-4">
+                   <div class="row">
+                       <h4>Legend:</h4>
+                        <div class="col-sm-4">
+                              <button class="btn btn-success">
+                                  <span class="glyphicon glyphicon-ok"></span>
+                               </button>
+                               <p>Correct</p>
+                        </div>
+                        <div class="col-sm-4">
+                               <button class="btn btn-danger">
+                                   <span class="glyphicon glyphicon-remove"></span>
+                               </button>
+                             <p>Incorrect</p>
+                        </div>
+                    </div>
+               </div>
+        </div>
+        <div class="row">
+           <div class="col-xs-12">
+              <div class="panel panel-success">
+                  <div class="panel-heading">
+                      <h3 class="panel-title text-center">REPORT</h3>
+                  </div>
+                  <div class="panel-body">
+                           <h2 class="text-center">You Scored {{quizMetrics.numCorrect}} / {{quizMetrics.quizData.length}}</h2>
+                    
+                           <h2 class="text-center"><strong>{{calculatePerc() | number:2}}%</strong></h2>
+                   </div>
+               </div>
+        
+                
+ 
+           </div>
+
+          
+
+        </div>
+
+
+
+
+        <div class="row">
+          <h3>Questions</h3>
+          <div class="well well-sm">
+               <div class="row">
+                   <div class="col-xs-12">
+                         <h4> {{activeQuestion+1 +". "+quizMetrics.quizData[activeQuestion].text}} </h4>
+                          <div class="row" ng-if="quizMetrics.quizData[activeQuestion].type ==='text'">
+                                <div class="col-sm-12" ng-repeat="answers in quizMetrics.quizData[activeQuestion].possibilities">
+                                    <h4 class="answer" ng-class="getAnswerClass($index)">
+                                      {{answers.answer}}
+                                      <p class="pull-right" ng-show="$index !== quizMetrics.quizData[activeQuestion].correctanswer && $index === quizMetrics.quizData[activeQuestion].selected">Your Answer</p>
+                                      <p class="pull-right" ng-show="$index === quizMetrics.quizData[activeQuestion].correctanswer">correct Answer</p>
+                                    </h4>
+                                </div>
+                             </div>
+
+                              <<div class="row" ng-if="quizMetrics.quizData[activeQuestion].type ==='image'">
+                                <div class="col-sm-6" ng-repeat="answers in quizMetrics.quizData[activeQuestion].possibilities">
+                                    <div class="image-answer" ng-class="getAnswerClass($index)">
+                                      <img ng-src="{{answers.answer}}">
+
+                                    </div>
+                                </div>
+                              </div>
+                   </div>
+
+               </div>
+          </div>
+          <button class="btn btn-primary btn-lg" ng-click="reset()">Go Back To Facts</button>
+ 
+
+          
+
+
+        </div><!-- end of row -->
+
+
+
+
+
+      </div>
+
+
+
+    </div>
+
+ 
+
+
+   
+    <!-- bower:js -->
+        <script src="../bower_components/jquery/dist/jquery.js"></script>
+
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-timer/dist/assets/js/angular-timer-all.min.js"></script>
+     <script src="../bower_components/moment/moment.js"></script>
+    <script src="../bower_components/flow.js/dist/flow.js"></script>
+    <script src="../bower_components/ng-flow/dist/ng-flow.js"></script>
+
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="js/parallax.js"></script>
+       <script type="text/javascript">
+    var scene = document.getElementById('scene');
+    var parallax = new Parallax(scene);
+
+
+    </script>
+  
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/quiz.js"></script>
+        <script src="scripts/controllers/list.js"></script>
+         <script src="scripts/controllers/result.js"></script>
+          <script src="scripts/controllers/formctrl.js"></script>
+           <script src="scripts/controllers/nav.js"></script>
+        <!-- endbuild -->
+</body>
+</html>

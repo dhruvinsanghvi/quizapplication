@@ -1,0 +1,273 @@
+ 
+body {
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.globe{
+  background: url(../images/globe-large.png);
+  position: absolute;
+  right: 20px;
+  background-repeat: no-repeat;
+  height: 620px;
+  width: 650px;
+}
+.globe1{
+  background: url(../images/globe-mid.png);
+  position: absolute;
+  top: -50px;
+  left:-30px;
+  background-repeat: no-repeat;
+  height: 500px;
+  width: 500px;
+
+}
+.globe2{
+  background: url(../images/globe-small.png);
+  position: absolute;
+  top: 500px;
+  background-repeat: no-repeat;
+  height: 300px;
+  width: 600px;
+}
+.logo1{
+  background: url(../images/android.png);
+  position: absolute;
+  top: 100px;
+  left: 20px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 100px;
+  width: 100px;
+ 
+}
+.logo2{
+  background: url(../images/javascript.png);
+  position: absolute;
+  top: 500px;
+  left: 283px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 100px;
+  width: 100px;
+
+}
+.logo3{
+  background: url(../images/IOS.png);
+  position: absolute;
+  left: 322px;
+  top:300px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 100px;
+  width: 100px;
+
+}
+.logo4{
+  background: url(../images/HTML5.png);
+  position: absolute;
+  top: 50px;
+  left: 270px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 100px;
+  width: 100px;
+
+}
+.logo5{
+  background: url(../images/jquery.png);
+  position: absolute;
+  top: 345px;
+  left: 445px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 100px;
+  width: 100px;
+
+}
+.logo6{
+  background: url(../images/python.png);
+  position: absolute;
+  left: 315px;
+  top:251px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 100px;
+  width: 100px;
+
+}
+.logo7{
+  background: url(../images/PHP.png);
+  position: absolute;
+  left: 168px;
+  top:59px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 100px;
+  width: 100px;
+
+}
+.logo8{
+  background: url(../images/css3logo.png);
+  position: absolute;
+  top: 200px;
+  left: 250px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 50px;
+  width: 50px;
+
+}
+
+.paralleleffect{
+    background: #afdefa;
+}
+/* General styles for all menus */
+.cbp-spmenu {
+  background: #47a3da;
+  position: fixed;
+}
+
+.cbp-spmenu .sidebar-user {
+  color: #afdefa;
+  font-size: 1.9em;
+  padding: 20px;
+  margin: 0;
+  font-weight: 300;
+  background: #0d77b6;
+}
+
+.cbp-spmenu a {
+  display: block;
+  color: #fff;
+  font-size: 1.1em;
+  font-weight: 300;
+}
+
+.cbp-spmenu a:hover {
+  background: #258ecd;
+}
+
+.cbp-spmenu a:active {
+  background: #afdefa;
+  color: #47a3da;
+}
+
+/* Orientation-dependent styles for the content of the menu */
+
+.cbp-spmenu-vertical {
+  width: 240px;
+  height: 100%;
+  top: 0;
+  z-index: 1000;
+  left:0px;
+}
+
+.cbp-spmenu-vertical a {
+  border-bottom: 1px solid #258ecd;
+  padding: 1em;
+}
+
+.cbp-spmenu-horizontal {
+  width: 100%;
+  height: 150px;
+  left: 0;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.cbp-spmenu-horizontal h3 {
+  height: 100%;
+  width: 20%;
+  float: left;
+}
+
+.cbp-spmenu-horizontal a {
+  float: left;
+  width: 20%;
+  padding: 0.8em;
+  border-left: 1px solid #258ecd;
+}
+.maincontainer{
+  margin-left: 250px;
+  width: calc(100% - 250px);
+  margin-right: 0px;
+}
+
+.answer{
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: 1px solid #bbb;
+}
+ .answer:hover{
+    cursor: pointer;
+}
+
+  .image-answer{
+    cursor: pointer;
+    height: 350px;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.image-answer img{
+    width: 100%;
+    height: auto;
+}
+
+.image-selected{
+    border: 3px solid #56afdc;
+}
+.well-image{
+    width: 100%;
+    height: 162px;
+}
+
+.image-answer.bg-success{
+    border: 3px solid #5ea640;
+}
+.image-answer.bg-danger{
+    border: 3px solid #b74848;
+}
+ .profile-img
+{
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.account-wall {
+    margin-top: 20px;
+    padding: 40px 10px 20px 10px;
+    background-color: #f7f7f7;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+.profilepic {
+  height: 60px;
+  width: 60px;
+}
+.mgl10{
+  margin-left: 10px;
+}
+.mgr10{
+  margin-right: 10px;
+}
+.mgt40{
+  margin-top: 40px;
+}
+
+
+
+
+
+ 
+
