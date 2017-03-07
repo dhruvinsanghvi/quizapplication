@@ -23,6 +23,11 @@ angular
         quizData:[],
         numCorrect:0,
         formData:{},
+        loginData:{},
+        loggeduser:{},
+        quizType:"",
+       
+     
         
 
         getListData:function(callback){
@@ -30,6 +35,11 @@ angular
          $http.get('/api/list')
            .then(function(response) {
           quizObj.listData = response.data;
+          quizObj.sidebarScore={};
+          angular.forEach(quizObj.listData, function (value, key){
+             quizObj.sidebarScore[value.type]= 10;
+
+          });
           console.log(quizObj.listData);
           callback(quizObj.listData);
     });
@@ -42,27 +52,46 @@ angular
          $http.get('/api/users')
            .then(function(response) {
             quizObj.formData = response.data;
+            
 
          
           callback(quizObj.formData);
     });
 
        
+},
+        loginUser:function(callback){
+             $http.post('/api/login', quizObj.loginData).then(function(response){
+                quizObj.loggeduser = response.data; 
+        
+ 
+                      angular.forEach(quizObj.loggeduser.score, function (value, key){
+                  var k = Object.keys(value)[0];
+             quizObj.sidebarScore[k]= value[k];
 
-        },
-        loginUser:function(){
-              $http.get('/api/login')
-           .then(function(response) {
-            quizObj.formData = response.data;
-
-         
-          callback(quizObj.formData);
-    });
+          });
+            callback(response.data);
+            quizObj.getuserData(function(){});
 
 
+
+          });
+
+ },
+    updateUser:function(callback){
+        quizObj.loggeduser.score.push({[quizObj.quizType]:quizObj.numCorrect});
+
+        var id = quizObj.loggeduser._id;
+             $http.put('/api/users/'+id, quizObj.loggeduser).then(function(response){
+                quizObj.loggeduser = response.data; 
+            callback(response.data);
            
 
-        },
+
+
+          });
+
+ },
 
         addUser:function(callback){
           $http.post('/api/users', quizObj.formData).then(function(response){

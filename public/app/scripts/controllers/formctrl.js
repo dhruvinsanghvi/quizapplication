@@ -8,12 +8,15 @@
  * Controller of the finalassignmentApp
  */
 angular.module('finalassignmentApp')
-  .controller('formCtrl', function ($scope, quizMetrics) {
+  .controller('formCtrl', function ($rootScope,$scope, quizMetrics) {
     $scope.formInfo = {},
+    $scope.loginInfo = {},
+
     
  
     $scope.showForm = false;
     quizMetrics.formData = $scope.formInfo;
+     quizMetrics.loginData = $scope.loginInfo;
      
     $scope.getFile = function(file){
     console.log(file.file);
@@ -35,9 +38,28 @@ angular.module('finalassignmentApp')
 
     }
     $scope.login = function(){
-      formValidate();
+      $scope.validate = true;
+    if (!$scope.loginInfo.username) {
+        $scope.emailRequired = 'Email Required';
+         $scope.validate = false;
+      }
+    if (!$scope.loginInfo.password) {
+        $scope.passRequired = 'Password Required';
+         $scope.validate = false;
+      }
+
       if($scope.validate){
-        quizMetrics.loginUser(function(){});
+        quizMetrics.loginUser(function(){
+          console.log(quizMetrics.loggeduser.score);
+     
+        quizMetrics.showList=true ;
+        $scope.showForm = true;
+        quizMetrics.hideParallax=true;
+        quizMetrics.showNav = true;
+        
+        });
+    
+
       }
 
 

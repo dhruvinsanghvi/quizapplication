@@ -75,6 +75,7 @@ angular.module('finalassignmentApp')
   		numQuestAnswered = 0;
   		$scope.activeQuestion = 0;
   		quizMetrics.markQuiz();
+      quizMetrics.updateUser(function(){});
   		quizMetrics.changeState('quiz', false);
   		quizMetrics.changeState('result', true);
 

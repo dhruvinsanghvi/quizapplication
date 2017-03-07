@@ -38,9 +38,29 @@ module.exports.getUserById = function(id,callback){
 	User.findById(id,callback);
 }
 module.exports.addUser = function(user,callback){
+	User.create(user, callback);
 
-	User.create(user,callback);
+	
 }
-module.exports.authenticate = function(password, username, callback){
-	User.findOne({email : username}, callback);
+module.exports.updateUser = function(id, user, options, callback){
+	var query = {_id :id};
+	var update = {
+		score:user.score
+
+	};
+
+	User.findOneAndUpdate(query, update, options, callback);
+
+	
+}
+module.exports.getUserByUsername = function(username, callback){
+	var query = {username: username};
+	User.findOne(query, callback);
+}
+module.exports.comparePassword = function(candidatePassword, originalpassword, callback){
+	console.log(candidatePassword);
+	console.log(originalpassword);
+	callback(false, candidatePassword == originalpassword);
+	
+	
 }

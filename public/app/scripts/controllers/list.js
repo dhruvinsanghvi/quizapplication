@@ -24,6 +24,7 @@ angular.module('finalassignmentApp')
   		$scope.activeQuiz=index;
     }
     $scope.activateQuiz = function(listInfo){
+      quizMetrics.quizType = listInfo.type;
       
       quizMetrics.changeTopic(listInfo);
       quizMetrics.showList = false;
